@@ -1,0 +1,31 @@
+<%= render partial: 'navbar' %>
+
+<%= flash[:notice] %>
+
+<%= flash[:error] %>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1>Avaiblable Money:    <span class="text-success"><%= get_avaiblable_money %></h1>
+    </div>
+    <div class="col-6 offset-3 py-5 my-5">
+      <h3>Send Money</h3>
+      <form action="/transactions" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select User</label>
+          <select class="form-control" name="receiver_id" required="">
+            <% @users.each do |user| %>
+              <option value="<%= user.id %>"><%= user.email %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label >Amount to be Sent</label>
+          <input type="number" class="form-control" name="amount" required=""  >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
