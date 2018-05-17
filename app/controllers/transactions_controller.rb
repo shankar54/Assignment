@@ -18,12 +18,12 @@ class TransactionsController < ApplicationController
         redirect_to '/transactions'
       else
         flash[:error] = 'Not Enough Money'
-        redirect_to '/home/index'
+        redirect_to authenticated_root_path
       end
     else
       
       flash[:error] = 'please try again'
-      redirect_to '/home/index'
+      redirect_to authenticated_root_path
     end
   end
 end

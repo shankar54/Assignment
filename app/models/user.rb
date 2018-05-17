@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :sender_transactions, class_name: "Transaction", foreign_key: "sender_id"
   has_many :recevied_transactions, class_name: "Transaction", foreign_key: "receiver_id"
-  after_save :add_money
+  after_create :add_money
 
   #removing bussiness logic from the controller 
 
